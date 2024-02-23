@@ -6,9 +6,9 @@ public class CountryAndCapital {
     private String capital;
     public CountryAndCapital next;
 
-    public CountryAndCapital(String country, String capital) {
-        this.country = country;
-        this.capital = capital;
+    public CountryAndCapital(String key, String value) {
+        this.country = key;
+        this.capital = value;
         this.next = null;
     }
 
