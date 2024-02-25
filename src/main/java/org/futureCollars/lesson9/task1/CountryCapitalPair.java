@@ -1,12 +1,12 @@
 package org.futureCollars.lesson9.task1;
 
-public class CountryAndCapital {
+public class CountryCapitalPair {
 
     private String country;
     private String capital;
-    public CountryAndCapital next;
+    public CountryCapitalPair next;
 
-    public CountryAndCapital(String key, String value) {
+    public CountryCapitalPair(String key, String value) {
         this.country = key;
         this.capital = value;
         this.next = null;

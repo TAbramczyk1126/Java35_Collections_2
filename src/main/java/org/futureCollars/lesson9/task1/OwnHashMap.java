@@ -3,25 +3,25 @@ package org.futureCollars.lesson9.task1;
 public class OwnHashMap implements OwnMap {
 
     private static final int DEFAULT_SIZE = 10;
-    private CountryAndCapital[] table;
+    private CountryCapitalPair[] table;
     private int size;
 
     public OwnHashMap() {
-        table = new CountryAndCapital[DEFAULT_SIZE];
+        table = new CountryCapitalPair[DEFAULT_SIZE];
         size = 0;
     }
 
     @Override
     public boolean put(String key, String value) {
         int index = hash(key) % table.length;
-        for (CountryAndCapital entry : table) {
+        for (CountryCapitalPair entry : table) {
             if (entry != null && entry.getCountry().equals(key)) {
                 entry.setCapital(value);
                 return true;
             }
         }
 
-        table[index] = new CountryAndCapital(key, value);
+        table[index] = new CountryCapitalPair(key, value);
         size++;
         return true;
     }
@@ -29,7 +29,7 @@ public class OwnHashMap implements OwnMap {
     @Override
     public boolean containsKey(String key) {
         int index = hash(key) % table.length;
-        CountryAndCapital entry = table[index];
+        CountryCapitalPair entry = table[index];
 
         while (entry != null) {
             if (entry.getCountry().equals(key)) {
@@ -42,7 +42,7 @@ public class OwnHashMap implements OwnMap {
 
     @Override
     public boolean containsValue(Object value) {
-        for (CountryAndCapital entry : table) {
+        for (CountryCapitalPair entry : table) {
             while (entry != null) {
                 if (entry.getCapital().equals(value)) {
                     return true;
@@ -56,8 +56,8 @@ public class OwnHashMap implements OwnMap {
     @Override
     public String remove(String key) {
         int index = hash(key) % table.length;
-        CountryAndCapital entry = table[index];
-        CountryAndCapital prev = null;
+        CountryCapitalPair entry = table[index];
+        CountryCapitalPair prev = null;
 
         while (entry != null) {
             if (entry.getCountry().equals(key)) {
@@ -79,7 +79,7 @@ public class OwnHashMap implements OwnMap {
     @Override
     public String get(String key) {
         int index = hash(key) % table.length;
-        CountryAndCapital entry = table[index];
+        CountryCapitalPair entry = table[index];
 
         while (entry != null) {
             if (entry.getCountry().equals(key)) {
